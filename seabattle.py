@@ -41,8 +41,7 @@ class Game:
         matrix = current_state["matrix"]
         names = current_state["names"]
         for i, contestant_alias in enumerate(self.config.get(enemy_section, "contestant_aliases").split()):
-            field += """<tr><td class="name" title="{title}">{alias}</td>""".format(alias=contestant_alias, 
-                                                                                    title=names.get(contestant_alias, "Некто без единой посылки"))
+            field += """<tr><td class="name">{title}</td>""".format(title=names.get(contestant_alias, contestant_alias))
             for j, problem in enumerate(self.problems):
                 state = matrix.get(contestant_alias, {}).get(problem["alias"], "n/a")
                 if reveal and self.fields[team][i][j] == 'X':
